@@ -1,0 +1,130 @@
+:host
+{
+--size-16: 16px;
+--size-14: 14px;
+--size-12: 12px;
+--size-26: 26px;
+--light-sea-green:#20b2aa;
+--dark-cyan:#008b8b;
+--light-white:#fafafa;
+--h1-font-size-medium-32: 32px;
+--dark-blue:#00008B; 
+}
+h1
+{
+    font-size: 50px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-weight: bold;
+    color: var(--light-white);
+    text-align: center;
+}
+h2
+{
+    font-size: var(--h1-font-size-medium-32);
+    color:var(--dark-blue);
+    font-weight: 600;
+    
+}
+h3
+{
+    font-weight: 700;
+}
+.styleApp
+{
+    min-height: 100vh;
+    background-image: url(/sfsites/c/resource/bodyFatPercentage);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.styleInfo
+{
+    max-width: 420px;
+    max-height: 600px;
+    min-height: 500px;
+    background: var(--light-sea-green);
+    padding: var(--size-16);
+    border-radius: 38px;
+    font-size: var(--size-14);
+    text-align: center;
+}
+.styleRectangle
+{
+    max-width: 420px;
+    max-height:  600px;
+    min-height: 500px;
+    text-align: center;
+    background: var(--dark-cyan);
+    border-radius: 38px;
+    padding: var(--size-16);
+    color: var(--light-white);
+}
+.styleFitnessInfo
+{
+    display: block;
+    background: var(--light-sea-green);
+    width: 600px;
+    border-radius: 38px;
+    padding: var(--size-16);
+    margin-left: auto;
+    margin-right: auto;
+}
+.styleContainer
+{
+    padding: var(--size-16);
+    font-size: var(--size-14);
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+}
+input
+{
+    padding: 8px;
+    font-size: var(--size-16);
+}
+label
+{
+    color:var(--light-white);
+    font-size: 20px;
+}
+.custom-button
+{
+    background: var(--light-sea-green);
+    color:var(--light-white);
+    font-size: 24px;
+    padding: var(--size-12);
+    border-color:var(--light-sea-green);
+    margin-top: var(--size-16);
+    text-align: center;
+    justify-content: center;
+    align-items: center; 
+}
+.custom-button-two
+{
+    background: var(--dark-cyan);
+    border-color: var(--dark-cyan);
+    color: var(--light-white);
+    font-size: 24px;
+    padding: var(--size-12);
+    margin-top: 20px;
+    text-align: center;
+    justify-content: center;
+    align-items: center; 
+}
+.styleUserInfo
+{
+    display: block;
+    background: var(--light-sea-green);
+    width: 600px;
+    margin: 40px;
+    border-radius: 20px;
+    padding: var(--size-16);
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+}
+.footer
+{
+    background:#fff;
+    width: 500px;
+}

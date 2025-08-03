@@ -1,0 +1,164 @@
+<template>
+    <lightning-card>
+        <div class="styleApp">
+            <h1 class="slds-text-align_center">Body Fat Percentage Calculator</h1>
+            <!--  -->
+            <template if:false={showUserForm}> 
+            <template if:true={showFitnessInfo}>
+                <div class="styleFitnessInfo">
+                    <div class="styleContainer">
+                        <ul style="list-style-type:disc">
+                            <li class="slds-var-m-bottom_medium"><b>Hydration:</b> Aim for about 8-10 cups (64-80
+                                ounces) of water daily, but adjust based on your body's needs, climate, and activity
+                                level.</li>
+                            <li class="slds-var-m-bottom_medium"><b>Balanced Diet:</b> Include a variety of fruits,
+                                vegetables, lean proteins, whole grains, and healthy fats in your meals. Try to limit
+                                processed foods, added sugars, and excessive salt.</li>
+                            <li class="slds-var-m-bottom_medium"><b>Regular Exercise:</b> Aim for at least 30 minutes of
+                                moderate exercise most days of the week. This can be walking, jogging, cycling, or any
+                                activity you enjoy.</li>
+                            <li class="slds-var-m-bottom_medium"><b>Adequate Sleep:</b> Aim for 7-9 hours of quality
+                                sleep each night to allow your body to rest and recover.</li>
+                            <li class="slds-var-m-bottom_medium"><b>Mindfulness and Relaxation:</b> Practice
+                                stress-relief techniques such as meditation, yoga, or deep breathing exercises to manage
+                                stress levels.</li>
+                            <li class="slds-var-m-bottom_medium"><b>Regular Health Check-ups:</b> Schedule regular
+                                visits with your healthcare provider for check-ups and screenings to maintain good
+                                health.Limit Added Sugars and Processed Foods: Reduce consumption of sugary drinks,
+                                candies, processed snacks, and foods high in added sugars. Check food labels for hidden
+                                sugars.</li>
+                            <li class="slds-var-m-bottom_medium"><b>Limit Added Sugars and Processed Foods:</b> Reduce
+                                consumption of sugary drinks, candies, processed snacks, and foods high in added sugars.
+                                Check food labels for hidden sugars.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <button class="slds-button slds-button_neutral custom-button-info slds-align_absolute-center 
+                    slds-var-m-bottom_large" onclick={handleBack}> Go Back </button>
+                    </div>
+                </div>
+            </template>
+            
+<!-- template on template is wrong -->
+            <template if:false={showFitnessInfo}>
+                <!-- Main Div Tag -->
+                <div class="slds-grid slds-gutters slds-align_absolute-center">
+                    <!-- Column 1 starts: Div Tag for Why does Body Fat Percentage Matters? -->
+                    <div class="styleInfo slds-m-right_medium slds-col">
+                        <h2><b>Why does Body Fat Percentage Matters?</b></h2>
+                        <p class="slds-var-m-bottom_medium">Body fat percentage is a key indicator of good health.
+                            A high body fat percentage may put you at a higher risk of lifestyle diseases.</p>
+                        <h3 class="slds-text-color_error slds-text-heading_medium">Know Healthy Body Fat Percentage
+                            Ranges</h3>
+                        <p class="slds-var-m-bottom_medium"><b>For Men:</b> Generally, a healthy range for men is
+                            between 10-20% body fat.
+                            Athletes might fall into the lower end of this spectrum due to their training.</p>
+                        <p class="slds-var-m-bottom_medium"><b>For Women:</b> A healthy range for women tends to be
+                            slightly higher, around 18-28% body fat.
+                            Again, athletes or those in exceptional fitness may fall below this range.</p>
+                        <button class="slds-button slds-button_neutral custom-button-info slds-align_absolute-center 
+                    slds-var-m-bottom_large" onclick={handleInfo}>Curious Minds Welcome! Lets talk fitness.</button>
+                    </div>
+
+                    <!-- Column 2 starts: Div Tag for Form Element -->
+                    <div class="styleRectangle slds-m-left_medium slds-col">
+                        <template if:false={showResult}>
+                            <form onsubmit={handleCalculate}>
+                                <div class="slds-form-element slds-var-m-bottom_medium">
+                                    <label class="slds-form-element__label slds-text-title_bold"
+                                        for="text-input-neck"><b>Neck (in cm)</b></label>
+                                    <div class="slds-form-element__control">
+                                        <input type="number" id="text-input-neck" placeholder="Enter Your Neck in cm"
+                                            required class="slds-input" name="neck" value={neck} onchange={inputHandler} 
+                                            min="0"/>
+                                    </div>
+                                </div>
+
+                                <div class="slds-form-element slds-var-m-bottom_medium">
+                                    <label class="slds-form-element__label slds-text-title_bold"
+                                        for="text-input-waist"><b>Waist (in cm)</b></label>
+                                    <div class="slds-form-element__control">
+                                        <input type="number" id="text-input-waist" placeholder="Enter Your Waist in cm"
+                                            required class="slds-input" name="waist" value={waist} onchange={inputHandler}
+                                            min="0"/>
+                                    </div>
+                                </div>
+
+                                <div class="slds-form-element slds-var-m-bottom_medium">
+                                    <label class="slds-form-element__label slds-text-title_bold"
+                                        for="text-input-height"><b>Height (in cm)</b></label>
+                                    <div class="slds-form-element__control">
+                                        <input type="number" id="text-input-height"
+                                            placeholder="Enter Your Height in cm" required class="slds-input" name="height"
+                                            value={height} onchange={inputHandler} min="0" />
+                                    </div>
+                                </div>
+
+                                <div class="slds-form-element slds-var-m-bottom_medium">
+                                <label class="slds-form-element__label slds-text-title_bold"><b>Gender</b></label>
+                                <div class="slds-form-element__control">
+                                    <label class="slds-var-m-right_small"><input type="radio" name="gender" value="male" required checked={isMale} 
+                                            onchange={handleGenderInput}/>Male</label>
+                                            
+                                    <label><input type="radio" name="gender" value="female" required checked={isFemale} 
+                                            onchange={handleGenderInput}/>Female</label>
+                                </div>
+                                </div>
+                            
+                                <template if:true={isFemale}>
+
+                                    <div class="slds-form-element slds-var-m-bottom_medium">
+                                        <label class="slds-form-element__label slds-text-title_bold"
+                                            for="text-input-hip"><b>Hip (in cm)</b>- Only for Women</label>
+                                        <div class="slds-form-element__control">
+                                            <input type="number" id="text-input-hip" placeholder="Enter Your Hip in cm"
+                                                required class="slds-input" min="0" name="hip" value={hip} onchange={inputHandler}/>
+                                        </div>
+                                    </div>
+                                </template>
+
+                                <button type="Submit" class="slds-button slds-button_neutral slds-button_stretch custom-button 
+                                slds-var-m-bottom_large">Calculate</button>
+
+                            </form>
+                        </template>
+
+                        <template if:true={showResult}>
+                            <h2><br><br> Your Body Fat Percentage is : {bodyFatResult} <br><br></h2>
+
+                            <button class="slds-button slds-button_neutral slds-button_stretch custom-button
+                            slds-var-m-bottom_large slds-var-m-top_large" onclick={handleRecompute}>Recompute</button>
+
+                            <button class="slds-button slds-button_neutral slds-button_stretch custom-button
+                            slds-var-m-bottom_large slds-var-m-top_large" onclick={handleGetEmail}>Get Report on Email!</button>
+                        </template>
+                    </div>
+                </div>
+            </template>
+            </template>
+                <template if:true={showUserForm}>
+                    <div class="styleUserInfo">
+                        <lightning-record-edit-form object-api-name={objectApiName} record-id={recordId} onsuccess={handleUserFormSuccess} onsubmit={handleSubmit}>
+                            <lightning-input-field field-name={userBodyPer} value={userCalBodyPer}></lightning-input-field>
+                            <lightning-input-field field-name={firstName}></lightning-input-field>
+                            <lightning-input-field field-name={lastName}></lightning-input-field>
+                            <lightning-input-field field-name={email}></lightning-input-field>
+
+                            <button class="slds-button slds-button_stretch custom-button-two 
+                                            slds-var-m-bottom_large">Submit</button>
+                            <button class="slds-button slds-button_stretch custom-button-two 
+                                            slds-var-m-bottom_large"
+                                            onclick={handleUserFormBackEvent}>Back</button>
+                            
+                        </lightning-record-edit-form>
+                    </div>
+                </template>
+                <footer class="slds-p-around_medium slds-text-align_center slds-align_absolute-center">
+                    <div class="footer">
+                    <p>&copy; 2025 Premium Learnings Pvt. Ltd. All rights are reserved</p>
+                    <p> Discover more projects with us</p>
+                    </div>
+                </footer>
+</div>
+</lightning-card>
+</template>
